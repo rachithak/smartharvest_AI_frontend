@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SmartHarvest AI | Crop Assistance Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand brand-side" href="#home">
+        <span class="brand-mark">🌱</span>
+        <span>SmartHarvest <b>AI</b></span>
+      </a>
+      <nav class="side-nav" aria-label="Main navigation">
+        <a class="nav-link active" href="#home"><span>⌂</span> Home</a>
+        <a class="nav-link" href="#disease"><span>🍃</span> Disease Detection</a>
+        <a class="nav-link" href="#irrigation"><span>💧</span> Irrigation Assistant</a>
+        <a class="nav-link" href="#dashboard"><span>▥</span> Dashboard</a>
+        <a class="nav-link" href="#about"><span>ⓘ</span> About</a>
+      </nav>
+      <div class="sidebar-landscape">
+        <div class="sun"></div><div class="hill hill-one"></div><div class="hill hill-two"></div>
+        <div class="windmill">✣</div><div class="farm-house">⌂</div>
+      </div>
+    </aside>
+
+    <main class="main-content" id="home">
+      <header class="hero-header">
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">☰</button>
+        <div class="hero-brand">
+          <div class="large-logo">🌿</div>
+          <div>
+            <h1>SmartHarvest <span>AI</span></h1>
+            <p>AI-powered Crop Assistance Platform</p>
+          </div>
+        </div>
+        <div class="tagline"><span>🌱</span> Smarter Farming. Greener Tomorrow.</div>
+      </header>
+
+      <section class="top-grid">
+        <article class="panel disease-panel" id="disease">
+          <div class="section-heading">
+            <span class="heading-icon leaf">🍃</span>
+            <div><h2>Crop Disease Detection</h2><p>Upload a leaf image to check for diseases</p></div>
+          </div>
+          <div class="disease-content">
+            <div class="upload-column">
+              <label class="upload-box" for="leafInput">
+                <span class="upload-symbol">▧</span>
+                <strong>Drag &amp; drop an image here</strong>
+                <span>or</span>
+                <span class="choose-button">📷 Choose Image</span>
+                <input id="leafInput" type="file" accept="image/*" hidden />
+              </label>
+              <div class="preview-wrap" id="previewWrap">
+                <img id="leafPreview" src="" alt="Uploaded leaf preview" />
+                <span id="previewPlaceholder">Your leaf image preview will appear here</span>
+              </div>
+            </div>
+            <div class="result-column">
+              <div class="result-card">
+                <div class="result-title"><span class="check-icon">✓</span><div><h3>Prediction Result:</h3><strong id="diseaseName">Healthy Leaf</strong></div></div>
+                <p>Confidence: <b id="confidence">—</b></p>
+                <div class="progress-track"><div class="progress-fill" id="confidenceBar"></div></div>
+                <small class="demo-note" id="predictionNote">Upload a leaf image to run a demo prediction.</small>
+              </div>
+              <div class="action-card">
+                <span class="bulb">💡</span><div><h3>Recommended Action:</h3><p id="diseaseAction">Keep monitoring your crop and maintain balanced watering.</p></div><span class="action-leaf">🍃</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="panel irrigation-panel" id="irrigation">
+          <div class="section-heading">
+            <span class="heading-icon water">💧</span>
+            <div><h2>Irrigation Assistant</h2><p>Get recommendations based on soil &amp; weather</p></div>
+          </div>
+          <div class="field-row">
+            <label for="moisture"><span>🟫</span> Soil Moisture (%)</label>
+            <input type="number" id="moisture" min="0" max="100" value="35" />
+          </div>
+          <div class="field-row">
+            <label for="crop"><span>🌱</span> Crop Type</label>
+            <select id="crop"><option>Rice</option><option>Wheat</option><option>Tomato</option><option>Maize</option><option>Sugarcane</option></select>
+          </div>
+          <button class="primary-button" id="recommendBtn">💧 Get Recommendation</button>
+          <div class="recommendation-card" aria-live="polite">
+            <h3>💧 Recommendation:</h3>
+            <p id="irrigationText">Your soil is slightly dry. Consider irrigating today or within 1 day.</p>
+          </div>
+        </article>
+      </section>
+
+      <section class="bottom-grid">
+        <article class="panel dashboard-panel" id="dashboard">
+          <div class="section-heading">
+            <span class="heading-icon chart-icon">▥</span><h2>Your Farming Dashboard</h2>
+          </div>
+          <div class="dashboard-content">
+            <div class="donut-area">
+              <div class="donut" aria-label="Crop scan breakdown"><div class="donut-center"><b id="scanCount">12</b><span>Total<br>Scans</span></div></div>
+              <div class="legend">
+                <div><i class="dot healthy"></i> Healthy Leaves <b>50%</b></div>
+                <div><i class="dot blight"></i> Leaf Blight <b>33%</b></div>
+                <div><i class="dot rust"></i> Rust Disease <b>17%</b></div>
+              </div>
+            </div>
+            <div class="chart-area">
+              <h3>Predictions Over Time</h3>
+              <svg class="line-chart" viewBox="0 0 520 190" role="img" aria-label="Predictions from November 6 to November 10">
+                <g class="grid-lines"><path d="M45 20H500 M45 85H500 M45 150H500"/><path d="M45 20V150 M158 20V150 M271 20V150 M384 20V150 M497 20V150"/></g>
+                <g class="axis-labels"><text x="10" y="154">0</text><text x="10" y="89">5</text><text x="4" y="24">10</text></g>
+                <path class="chart-fill" d="M45 85 L158 59 L271 28 L384 48 L497 28 L497 150 L45 150Z"/>
+                <path class="chart-line" d="M45 85 L158 59 L271 28 L384 48 L497 28"/>
+                <g class="chart-points"><circle cx="45" cy="85" r="5"/><circle cx="158" cy="59" r="5"/><circle cx="271" cy="28" r="5"/><circle cx="384" cy="48" r="5"/><circle cx="497" cy="28" r="5"/></g>
+                <g class="date-labels"><text x="45" y="178">Nov 6</text><text x="158" y="178">Nov 7</text><text x="271" y="178">Nov 8</text><text x="384" y="178">Nov 9</text><text x="497" y="178">Nov 10</text></g>
+              </svg>
+            </div>
+          </div>
+        </article>
+        <article class="panel about-panel" id="about">
+          <div class="section-heading"><span class="heading-icon">🌱</span><h2>About SmartHarvest AI</h2></div>
+          <p>Helping farmers with AI-powered insights for healthier crops and a greener planet.</p>
+          <div class="sustainability"><span>🌍</span><b>Together for<br>Sustainable Agriculture</b><span>🍃</span></div>
+        </article>
+      </section>
+      <footer>SmartHarvest AI <span>•</span> A smarter way to care for your crops</footer>
+    </main>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
